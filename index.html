@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Practice</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angularFire/2.3.0/angularfire.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+	<script src="script.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+	<script>
+  // Initialize Firebase
+  var config = {
+  	apiKey: "AIzaSyA9QjNJhzW1DHtp3z-HXexZjHzLgPDS1ic",
+  	authDomain: "person-app.firebaseapp.com",
+  	databaseURL: "https://person-app.firebaseio.com",
+  	projectId: "person-app",
+  	storageBucket: "",
+  	messagingSenderId: "281196076354"
+  };
+  firebase.initializeApp(config);
+</script>
+</head>
+<body ng-app="newApp">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">A New App</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse float-right" id="navbarColor02">
+			<ul class="navbar-nav mr-auto ">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Login</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<!-- jumbo -->
+	<div class="container-fluid">
+		<div class="jumbotron " ng-controller="newCon">
+			<h1 class="display-3">Hello, user!</h1>
+			<p class="lead">This is a simple new application</p>
+			<hr class="my-4">
+			<!-- codee here -->
+			<div class="row">
+				<div class="col-4">
+					<!-- alert -->
+					<div class="alert alert-dismissible alert-success" ng-if="added">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Success!</strong> Person Added.
+					</div>
+					<div class="alert alert-dismissible alert-danger" ng-if="deleted">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Warning!</strong> Person Deleted.
+					</div>
+					<div class="alert alert-dismissible alert-info" ng-if="updated">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Success!</strong> Person Updated.
+					</div>
+					<!-- alert -->
+					<form name="personDetails" ng-submit="addPerson()" ng-show="add" novalidate>
+						<div ng-include="'form.html'"></div>
+						<div class="form-group" >
+							<button class="btn btn-success" ng-disabled="personDetails.$invalid">Insert</button>
+						</div>
+					</form>
+
+					<form name="personDetails2" ng-submit="updatePerson()" ng-hide="add" novalidate >
+						<div ng-include="'form.html'"></div>
+						<div class="form-group" >
+							<button class="btn btn-primary" ng-disabled="personDetails2.$invalid">Update</button>
+						</div>
+					</form>
+				</div>
+				<div class="col-8">
+					<div class="row form-group">
+						<input class="form-control form-control-sm col-4" type="text" placeholder="Search" id="inputSmall" ng-model="search">
+					</div>
+					<table class="table">
+						<tr class="table-primary">
+							<th ng-click="sort('name')">Name</th>
+							<th ng-click="sort('email')">Email</th>
+							<th ng-click="sort('phone')">Phone</th>
+							<th></th>
+						</tr>
+						<tr ng-repeat="person in data | filter: search | orderBy: sortx : sorder " class="data">
+							<td>{{person.name}}</td>
+							<td>{{person.email}}</td>
+							<td>{{person.phone}}</td>
+							<td><button class="btn btn-primary btn-sm" ng-click="editPerson(person.$id)">Edit</button>
+								<button class="btn btn-danger btn-sm" ng-click="delPerson(person)">Delete</button></td>
+							</tr>
+						</table>
+						<!-- <button class="btn btn-secondary btn-sm" ng-click="load()" ng-hide="(data.length<=inc)">Load More...</button> -->
+					</div>
+				</div>
+				<!-- codee here -->
+
+
+			</div>
+
+
+		</body>
+		</html>

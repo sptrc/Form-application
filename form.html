@@ -1,0 +1,17 @@
+<div class="form-group">
+	<label class="form-control-label" for="name">Name</label>
+	<input type="text" class="form-control" name="name" id="name" ng-model="$parent.person.name" required>
+	<div class="invalid-feedback">Enter a name please.</div>
+</div>
+<div class="form-group has-danger">
+	<label class="form-control-label" for="email">Email</label>
+	<input type="email" name="email" class="form-control" id="email" ng-model="$parent.person.email" required>
+	<div class="invalid-feedback">Enter proper email</div>
+	<div class="valid-feedback">Correct email</div>
+</div>
+<div class="form-group">
+	<label class="form-control-label" for="phone">Phone</label>
+	<input type="text" name="phone" class="form-control" id="phone" ng-model="$parent.person.phone" required pattern="[0-9]{10}" maxlength="10">
+	<div class="invalid-feedback">Enter 10-digit mobile number</div>
+	<div class="valid-feedback">Phone number is correct</div>
+</div>

@@ -1,0 +1,61 @@
+.form-control.ng-invalid.ng-touched{
+	border-color: #d9534f;
+}
+.form-control.ng-invalid.ng-touched ~ .invalid-feedback{
+	display:block;
+}
+
+.form-control.ng-valid.ng-touched{
+	border-color: #02B875;
+}
+
+.form-control.ng-valid.ng-touched ~ .valid-feedback{
+	display:block;
+}
+
+.alert.ng-enter{
+	transition: 0.5s;
+	transform: scale(0);
+}
+
+.alert.ng-enter.ng-enter-active{
+	transform: scale(1);
+}
+
+.alert.ng-leave{
+	transition: 0.5s;
+	opacity: 1;
+}
+
+.alert.ng-leave.ng-leave-active{
+	opacity: 0;
+}
+.data.ng-enter{
+	transition: 0.5s;
+	transform: translateY(20px);
+	opacity: 0;
+}
+.data.ng-enter.ng-enter-active{
+	transform: translateY(0);
+	opacity: 1;
+}
+.data.ng-enter-stagger{
+	transition-delay: 0.2s;
+	transition-duration: 0s;
+}
+.data.ng-leave-stagger{
+	transition-delay: 0.2s;
+	transition-duration: 0s;
+}
+.data.ng-leave{
+	transition: 0.5s;
+	transform: translateX(0);
+	opacity: 1;
+}
+.data.ng-leave.ng-leave-active{
+	transform: translateX(20px);
+	opacity: 0;
+}
+.data{
+	transition: 0.5s;
+}
